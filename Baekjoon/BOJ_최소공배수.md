@@ -9,7 +9,7 @@
 
 두 자연수 A와 B가 주어졌을 때, A와 B의 최소공배수를 구하는 프로그램을 작성하시오.
 
-출처 : https://www.acmicpc.net/problem/1934
+출처 : [1934번 최소공배수](https://www.acmicpc.net/problem/1934)
 
 ### 풀이
 ```
