@@ -32,5 +32,6 @@ int main()
 	scanf("%d %d %d", &a, &b, &v);
 	day = (v - b) / (a - b);
 	printf("%.f", ceil(day));
+	return 0;
 }
 ```
