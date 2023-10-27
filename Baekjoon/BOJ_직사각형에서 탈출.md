@@ -21,5 +21,6 @@ int main()
 	if (x > w) x = w;
 	if (y > h) y = h;
 	x > y ? printf("%d", y) : printf("%d", x);
+	return 0;
 }
 ```
