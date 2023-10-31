@@ -1,27 +1,29 @@
 #include <stdio.h>
-#include <math.h>
 
-int main()
+int check(int n)
 {
-	int endNum = 665;
-	int n, count = 0;
+	if (n < 666) return 0;
+	if (n % 1000 == 666) 
+		return 1;
+	else 
+		check(n / 10);
+}
+
+int main(void)
+{
+	int n, num, i = 665, cnt = 0;
+
 	scanf("%d", &n);
-	while (1)
+
+	while (i++)
 	{
-		if (n == count)
-		{
-			printf("%d", endNum);
-			break;
+		if (check(i) == 1) {
+			num = i;
+			cnt++;
 		}
-		endNum++;
-		for (int i = 0; i <= 10; i++)
-		{
-			if (endNum / (int)pow(10,i) % 1000 == 666)
-			{
-				count++;
-				break;
-			}
-		}
+		if (cnt == n) break;
 	}
+	printf("%d", num);
+
 	return 0;
 }
