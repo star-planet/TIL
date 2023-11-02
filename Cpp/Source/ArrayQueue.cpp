@@ -3,12 +3,12 @@
 #include <cstdlib>
 #define MAX_QUEUE_SIZE 100
 
-// * ¿øÇü Å¥
-//- Ã³À½ °ªÀÌ ¹è¿­ÀÇ ³¡¿¡ µµ´ÞÇÏ¸é ´ÙÀ½ Áõ°¡°ªÀº Ã³À½°ªÀÌ µÇµµ·Ï ÇÔ
-//- Ã³À½°ú ³¡ÀÌ ¿¬°áµÇ¾î ÀÖ´Â ÇüÅÂ
+// * ì›í˜• í
+//- ì²˜ìŒ ê°’ì´ ë°°ì—´ì˜ ëì— ë„ë‹¬í•˜ë©´ ë‹¤ìŒ ì¦ê°€ê°’ì€ ì²˜ìŒê°’ì´ ë˜ë„ë¡ í•¨
+//- ì²˜ìŒê³¼ ëì´ ì—°ê²°ë˜ì–´ ìžˆëŠ” í˜•íƒœ
 
 
-// error°¡ ¹ß»ýÇÏ¸é ¹®±¸ Ãâ·Â ÈÄ °­Á¦Á¾·á
+// errorê°€ ë°œìƒí•˜ë©´ ë¬¸êµ¬ ì¶œë ¥ í›„ ê°•ì œì¢…ë£Œ
 inline void error(const char* message)
 {
 	printf("%s\n", message);
@@ -20,28 +20,28 @@ class CircularQueue
 protected:
 	int front;
 	int rear;
-	// Å©±â°¡ 100ÀÎ data ¹è¿­ ¼±¾ð
+	// í¬ê¸°ê°€ 100ì¸ data ë°°ì—´ ì„ ì–¸
 	int data[MAX_QUEUE_SIZE];
 public:
 	CircularQueue()
 	{
-		// front°ú rearÀÇ ÃÊ±â °ª 0
+		// frontê³¼ rearì˜ ì´ˆê¸° ê°’ 0
 		front = rear = 0;
 	}
 
-	// front¿Í rear°¡ °°´Ù¸é true ¹ÝÈ¯ (ºñ¾îÀÖ´ÂÁö È®ÀÎÇÏ´Â ¿ëµµ)
+	// frontì™€ rearê°€ ê°™ë‹¤ë©´ true ë°˜í™˜ (ë¹„ì–´ìžˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ìš©ë„)
 	bool isEmpty() { return front == rear; }
 
-	// Å©±â°¡ 100ÀÎ ¹è¿­¿¡¼­ ¿¹¸¦ µé¾î front°¡ 1 rear°¡ 100ÀÌ¸é °¡µæÂù °ÍÀÌ¹Ç·Î
-	// rear + 1À» MAX_QUEUE_SIZE·Î ³ª´« ³ª¸ÓÁö°¡ front¿Í °°´Ù¸é true ¹ÝÈ¯
+	// í¬ê¸°ê°€ 100ì¸ ë°°ì—´ì—ì„œ ì˜ˆë¥¼ ë“¤ì–´ frontê°€ 1 rearê°€ 100ì´ë©´ ê°€ë“ì°¬ ê²ƒì´ë¯€ë¡œ
+	// rear + 1ì„ MAX_QUEUE_SIZEë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ê°€ frontì™€ ê°™ë‹¤ë©´ true ë°˜í™˜
 	bool isFull()
 	{
 		return (rear + 1) % MAX_QUEUE_SIZE == front;
 	}
 
-	// ¿øÇü Å¥°¡ Æ÷È­»óÅÂ¶ó¸é ¿¡·¯ ¹®±¸ ¹ÝÈ¯ ÈÄ °­Á¦ Á¾·á
-	// ¿øÇü Å¥°¡ Æ÷È­»óÅÂ°¡ ¾Æ´Ï¶ó¸é rear + 1 °ªÀ» MAX_QUEUE_SIZE·Î ³ª´« ³ª¸ÓÁö À§Ä¡¿¡ µ¥ÀÌÅÍ Ãß°¡
-	// Ã³À½°ú ³¡ÀÌ ¿¬°áµÇ¾î ÀÖ±â ¶§¹®¿¡ Ç×»ó MAX_QUEUE_SIZE·Î ³ª´²ÁÖ¾î¾ß ÇÑ´Ù.
+	// ì›í˜• íê°€ í¬í™”ìƒíƒœë¼ë©´ ì—ëŸ¬ ë¬¸êµ¬ ë°˜í™˜ í›„ ê°•ì œ ì¢…ë£Œ
+	// ì›í˜• íê°€ í¬í™”ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ rear + 1 ê°’ì„ MAX_QUEUE_SIZEë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ ìœ„ì¹˜ì— ë°ì´í„° ì¶”ê°€
+	// ì²˜ìŒê³¼ ëì´ ì—°ê²°ë˜ì–´ ìžˆê¸° ë•Œë¬¸ì— ì²˜ìŒê³¼ ëì˜ ìœ„ì¹˜ëŠ” í•­ìƒ ë³€í•œë‹¤. ê·¸ë ‡ê¸°ì— MAX_QUEUE_SIZEë¡œ ë‚˜ëˆ ì£¼ì–´ì•¼ í•œë‹¤.
 	void enqueue(int val)
 	{
 		if (isFull())
@@ -55,9 +55,9 @@ public:
 		}
 	}
 
-	// ¿øÇü Å¥°¡ ºñ¾îÀÖ´Â »óÅÂ¶ó¸é ¿À·ù¹®±¸ Ãâ·Â ÈÄ °­Á¦ Á¾·á
-	// ºñ¾îÀÖ´Â »óÅÂ°¡ ¾Æ´Ï¶ó¸é front + 1 °ªÀ» MAX_QUEUE_SIZE·Î ³ª´« ³ª¸ÓÁö À§Ä¡·Î ÀÌµ¿ ÈÄ µ¥ÀÌÅÍ¸¦ Ãâ·Â ÈÄ ¹ÝÈ¯ÇÑ´Ù.
-	// Ã³À½°ú ³¡ÀÌ ¿¬°áµÇ¾î ÀÖ±â ¶§¹®¿¡ Ç×»ó MAX_QUEUE_SIZE·Î ³ª´²ÁÖ¾î¾ß ÇÑ´Ù.
+	// ì›í˜• íê°€ ë¹„ì–´ìžˆëŠ” ìƒíƒœë¼ë©´ ì˜¤ë¥˜ë¬¸êµ¬ ì¶œë ¥ í›„ ê°•ì œ ì¢…ë£Œ
+	// ë¹„ì–´ìžˆëŠ” ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ front + 1 ê°’ì„ MAX_QUEUE_SIZEë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ ìœ„ì¹˜ë¡œ ì´ë™ í›„ ë°ì´í„°ë¥¼ ì¶œë ¥ í›„ ë°˜í™˜í•œë‹¤.
+	// ì²˜ìŒê³¼ ëì´ ì—°ê²°ë˜ì–´ ìžˆê¸° ë•Œë¬¸ì— ì²˜ìŒê³¼ ëì˜ ìœ„ì¹˜ëŠ” í•­ìƒ ë³€í•œë‹¤. ê·¸ë ‡ê¸°ì— MAX_QUEUE_SIZEë¡œ ë‚˜ëˆ ì£¼ì–´ì•¼ í•œë‹¤.
 	int dequeue()
 	{
 		if (isEmpty())
@@ -71,6 +71,9 @@ public:
 			return data[front];
 		}
 	}
+
+	// ì›í˜• íê°€ ë¹„ì–´ìžˆëŠ” ìƒíƒœë¼ë©´ ì˜¤ë¥˜ë¬¸êµ¬ ì¶œë ¥ í›„ ê°•ì œ ì¢…ë£Œ
+	// ì›í˜• íì˜ ê°€ìž¥ ì•ž ë¶€ë¶„(front)ë¥¼ ì¶œë ¥í•œë‹¤
 	int peek()
 	{
 		if (isEmpty())
@@ -85,7 +88,7 @@ public:
 	}
 	void Print()
 	{
-		printf("Å¥ ³»¿ë : ");
+		printf("í ë‚´ìš© : ");
 		int max = (front < rear) ? rear : rear + MAX_QUEUE_SIZE;
 		for (int i = front + 1; i <= max; i++)
 		{
