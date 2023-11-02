@@ -141,7 +141,7 @@ int main()
 	deque.PushFront(3); // 3 2 1
 	deque.PushFront(4); // 4 3 2 1
 
-	// back으로 데이터를 입력한다.
+	// rear으로 데이터를 입력한다.
 	deque.PushBack(9); // 4 3 2 1 9
 	deque.PushBack(8); // 4 3 2 1 9 8
 	deque.PushBack(7); // 4 3 2 1 9 8 7
