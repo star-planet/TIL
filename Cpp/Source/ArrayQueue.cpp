@@ -42,6 +42,7 @@ public:
 	// 원형 큐가 포화상태라면 에러 문구 반환 후 강제 종료
 	// 원형 큐가 포화상태가 아니라면 rear + 1 값을 MAX_QUEUE_SIZE로 나눈 나머지 위치에 데이터 추가
 	// 처음과 끝이 연결되어 있기 때문에 처음과 끝의 위치는 항상 변한다. 그렇기에 MAX_QUEUE_SIZE로 나눠주어야 한다.
+	// // rear + 1부터 시작하는 이유는 front와 rear가 같은 위치가 되지 않도록 1칸을 더미 배열 칸으로 두기 위함이다.
 	void enqueue(int val)
 	{
 		if (isFull())
@@ -58,6 +59,7 @@ public:
 	// 원형 큐가 비어있는 상태라면 오류문구 출력 후 강제 종료
 	// 비어있는 상태가 아니라면 front + 1 값을 MAX_QUEUE_SIZE로 나눈 나머지 위치로 이동 후 데이터를 출력 후 반환한다.
 	// 처음과 끝이 연결되어 있기 때문에 처음과 끝의 위치는 항상 변한다. 그렇기에 MAX_QUEUE_SIZE로 나눠주어야 한다.
+	// // front + 1부터 시작하는 이유는 front와 rear가 같은 위치가 되지 않도록 1칸을 더미 배열 칸으로 두기 위함이다.
 	int dequeue()
 	{
 		if (isEmpty())
@@ -86,6 +88,9 @@ public:
 			return data[(front + 1) % MAX_QUEUE_SIZE];
 		}
 	}
+
+	// 원형 큐에서 front보다 rear가 크면 max를 rear로 설정하고 그게 아니면 rear + MAX_QUEUE_SIZE로 설정한다
+	// front + 1 위치부터 max위치까지 두 자리 수로 출력(두 자리보다 작다면 빈 칸은 공백출력)
 	void Print()
 	{
 		printf("큐 내용 : ");
@@ -100,18 +105,28 @@ public:
 
 void main()
 {
-
-
+	// class 선언
 	CircularQueue que;
+
+	// 원형 큐에 1 ~ 9의 데이터 추가
 	for (int i = 1; i < 10; i++)
 	{
 		que.enqueue(i);
 	}
-	que.Print();
-	que.dequeue();
-	que.dequeue();
-	que.dequeue();
-	que.peek();
-	que.Print();
 
+	// 원형 큐 현재상태 출력
+	que.Print(); // 1 2 3 4 5 6 7 8 9
+
+	// 데이터 1 삭제
+	que.dequeue();
+	// 데이터 2 삭제
+	que.dequeue();
+	// 데이터 3 삭제
+	que.dequeue();
+
+	// 원형 큐 front 출력
+	que.peek(); // 4
+
+	// 원형 큐 현재상태 출력
+	que.Print(); // 4 5 6 7 8 9
 }
