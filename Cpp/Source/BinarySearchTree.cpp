@@ -11,88 +11,91 @@
 
 #include <iostream>
 
+// 노드 선언
 class node
 {
 public:
-	int data;
-	node* left;
-	node* right;
+	int data; // 데이터를 담는 변수
+	node* left; // 왼쪽 자식 노드
+	node* right; // 오른쪽 자식 노드
 };
 
+// 노드 생성
 node* CreateNode(int _data)
 {
-	node* Node = new node;
+	node* Node = new node; // Node 포인터에 노드 저장
 
-	Node->data = _data;
-	Node->left = nullptr;
-	Node->right = nullptr;
+	Node->data = _data; // Node의 data에 _data 저장
+	Node->left = nullptr; // left 필드를 nullptr로 초기화
+	Node->right = nullptr; // right 필드를 nullptr로 초기화
 
-	return Node;
+	return Node; // Node 반환
 }
 
 node* MinNode(node* Node)
 {
-	node* minNode = Node;
-	while (minNode->left != nullptr)
+	node* minNode = Node; // minNode 에 Node 대입
+	while (minNode->left != nullptr) // minNode의 left 필드가 nullptr이 아니면
 	{
-		minNode = minNode->left;
+		minNode = minNode->left; // minNode에 minNode의 left 필드 값 대입
 	}
-	return minNode;
+	return minNode; // minNode를 반환
 }
 
 node* DeleteNode(node* root, int key)
 {
-	if (root == nullptr)
+	if (root == nullptr) // root가 nullptr이면
 	{
-		return root;
+		return root; // root를 반환
 	}
 
-	if (key < root->data)
+	if (key < root->data) // root의 data가 key보다 크면
 	{
-		root->left = DeleteNode(root->left, key);
+		root->left = DeleteNode(root->left, key); // key값을 찾을때까지 좌측 하위 필드로 이동
 	}
-	else if (key > root->data)
+	else if (key > root->data) // root의 data가 key보다 작면
 	{
-		root->right = DeleteNode(root->right, key);
+		root->right = DeleteNode(root->right, key); // key값을 찾을때까지 우측 하위 필드로 이동
 	}
-	else
+	else // 찾았다면
 	{
-		if (root->left == nullptr)
+		if (root->left == nullptr) // root의 left 필드가 nullptr이면
 		{
-			node* temp = root->right;
-			delete root;
-			return temp;
+			node* temp = root->right; // temp에 right 필드 저장
+			delete root; // 할당된 root 해제
+			return temp; // temp를 반환
 		}
-		else if (root->right == nullptr)
+		else if (root->right == nullptr) // root의 right 필드가 nullptr이면
 		{
-			node* temp = root->left;
-			delete root;
-			return temp;
+			node* temp = root->left; // temp에 left 필드 저장
+			delete root; // 할당된 root 해제
+			return temp; // temp를 반환
 		}
 
-
+		// temp에 MinNode를 실행시킨 값 대입
+		// root->right->left값이 nullptr이 아니면 temp는 root->right->left
+		// root->right->left값이 nullptr이면 temp는 root->right
 		node* temp = MinNode(root->right);
-		root->data = temp->data;
-		root->right = DeleteNode(root->right, temp->data);
+		root->data = temp->data; // temp의 data를 root의 data에 대입
+		root->right = DeleteNode(root->right, temp->data); // temp의 data값을 찾을때까지 우측 하위 필드로 이동
 	}
-	return root;
-
+	return root; // root를 반환
 }
 
 
 node* Search(node* root, int key)
 {
-	if (root == nullptr || root->data == key)
+	if (root == nullptr || root->data == key) // 만약 root가 nullptr이고 root의 data가 key이면
 	{
-		return root;
+		return root; // root를 반환
 	}
-	if (root->data < key)
+	if (root->data < key) // root의 data가 key보다 작으면
 	{
-		return Search(root->right, key);
+		return Search(root->right, key); // key값을 찾을때까지 우측 하위 필드로 이동
 	}
-	if (root->data > key)
+	if (root->data > key) // root의 data가 key보다 크면
 	{
-		return Search(root->left, key);
+		return Search(root->left, key); // key값을 찾을때까지 좌측 하위 필드로 이동
 	}
 }
 
@@ -100,7 +103,6 @@ node* Search(node* root, int key)
 
 int main()
 {
-
 
 	return 0;
 }
