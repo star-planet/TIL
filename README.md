@@ -4,5 +4,5 @@
 * [C++](https://github.com/WhiteYeoul/TIL/tree/main/Cpp)
 * [Baekjoon](https://github.com/WhiteYeoul/TIL/tree/main/Baekjoon)
 * [Programmers](https://github.com/WhiteYeoul/TIL/tree/main/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4)
-* [SWEA](https://github.com/WhiteYeoul/TIL/tree/main/SWEA/D1)
+* [SWEA](https://github.com/WhiteYeoul/TIL/tree/main/SWEA)
 
