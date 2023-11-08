@@ -64,13 +64,13 @@ public:
     ~AdjMatGraph() {}
 
     char getVertex(int i) {
-        return vertices[i]; // i번째 꼭짓점을 반환
+        return vertices[i]; // 정점 반환
     }
     int getEdge(int i, int j) {
-        return adjMat[i][j]; //(i,j) 위치의 정점을 반환
+        return adjMat[i][j]; // 간선 반환
     }
     void setEdge(int i, int j, int val) {
-        adjMat[i][j] = val; // (i,j) 위치의 정점을 val로 설정
+        adjMat[i][j] = val; // 간선 변경
     }
 
     // 그래프를 0으로 초기화, size도 0으로 초기화
@@ -84,7 +84,7 @@ public:
     }
 
     // 그래프가 포화상태라면 문구 출력 후 종료
-    // 포화상태가 아니라면 name은 0번 꼭짓점, 1번 꼭짓점, … 순서로 대입된다.
+    // 포화상태가 아니라면 정점 추가
     void insertVertex(char name) {
         if (isFull()) {
             cout << "Graph vertex full error" << endl;
@@ -94,7 +94,7 @@ public:
         vertices[size++] = name;
     }
 
-    // (u, v)와 (v, u)위치의 정점을 1로 설정
+    // 간선 삽입 함수 (정점간의 연결)
     void insertEdge(int u, int v) {
         setEdge(u, v, 1);
         setEdge(v, u, 1);
@@ -102,17 +102,17 @@ public:
 
     // 그래프 출력
     void display() {
-        cout << "vertex size : " << size << endl; // 꼭짓점 개수 출력
+        cout << "vertex size : " << size << endl; // 정점 개수 출력
         cout << "    ";
         for (int i = 0; i < size; i++) { 
-            cout << getVertex(i) << " "; // x축 꼭짓점 출력
+            cout << getVertex(i) << " "; // x축 정점 출력
         }
         cout << endl;
 
         for (int i = 0; i < size; i++) {
-            cout << getVertex(i) << " : "; // y축 꼭짓점 출력 후
+            cout << getVertex(i) << " : "; // y축 정점 출력 후
             for (int j = 0; j < size; j++) {
-                cout << getEdge(i, j) << " "; // y축 정점 출력
+                cout << getEdge(i, j) << " "; // 간선 출력
             }
             cout << endl; // 다음 y축으로 넘어감
         }
@@ -133,15 +133,15 @@ int main() {
     // class 선언
     AdjMatGraph graph;
 
-    graph.insertVertex('A'); // 꼭짓점 A 추가
-    graph.insertVertex('B'); // 꼭짓점 B 추가
-    graph.insertVertex('C'); // 꼭짓점 C 추가
-    graph.insertVertex('D'); // 꼭짓점 D 추가
+    graph.insertVertex('A'); // 정점 A 추가
+    graph.insertVertex('B'); // 정점 B 추가
+    graph.insertVertex('C'); // 정점 C 추가
+    graph.insertVertex('D'); // 정점 D 추가
 
-    graph.insertEdge(0, 1); // (0, 1), (1, 0) 에 정점 1 추가
-    graph.insertEdge(0, 2); // (0, 2), (2, 0) 에 정점 1 추가
-    graph.insertEdge(0, 3); // (0, 3), (3, 0) 에 정점 1 추가
-    graph.insertEdge(2, 3); // (2, 3), (3, 2) 에 정점 1 추가
+    graph.insertEdge(0, 1); // 0과 1 연결
+    graph.insertEdge(0, 2); // 0과 2 연결
+    graph.insertEdge(0, 3); // 0과 3 연결
+    graph.insertEdge(2, 3); // 2와 3 연결
 
     graph.display(); // 현재 그래프 상태 출력
 
