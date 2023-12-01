@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -12,12 +12,7 @@ int main()
 	{
 		cin >> A[i];
 	}
-	int minData = A[0], maxData = A[0];
-	for (int i = 0; i < N; i++)
-	{
-		minData = min(minData, A[i]);
-		maxData = max(maxData, A[i]);
-	}
-	cout << minData * maxData;
+	sort(A.begin(), A.end());
+	cout << A[0] * A[N - 1];
 	return 0;
 }
