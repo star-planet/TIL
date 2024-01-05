@@ -11,15 +11,10 @@ int main()
     Array.push_back(0);
     Array.push_back(1);
     cin >> N;
-    if (N == 0) cout << '0';
-    else if (N == 1) cout << '1';
-    else
+    for (int i = 2; i <= N; i++)
     {
-        for (int i = 2; i <= N; i++)
-        {
-            Array.push_back(Array[i - 1] + Array[i - 2]);
-        }
-        cout << Array.back();
+        Array.push_back(Array[i - 1] + Array[i - 2]);
     }
+    cout << Array[N];
     return 0;
 }
