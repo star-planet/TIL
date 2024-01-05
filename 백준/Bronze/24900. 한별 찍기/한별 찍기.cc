@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main(void)
+int main()
 {
 	cout << "                                                           :8DDDDDDDDDDDDDD$.                                           " << '\n';
 	cout << "                                                      DDDNNN8~~~~~~~~~~=~7DNNDNDDDNNI                                   " << '\n';
